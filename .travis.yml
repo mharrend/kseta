@@ -9,7 +9,7 @@ compiler:
 addons:
   apt:
     sources:
-      - sourceline: 'ppa:kalakris/cmake'
+      - sourceline: 'deb http://de.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse'
     packages:
       - cmake
 
