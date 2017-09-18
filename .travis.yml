@@ -1,0 +1,17 @@
+language: cpp
+dist: xenial
+os:
+  - linux
+compiler:  
+  - gcc
+  - clang
+
+before_script:
+  - echo "Preparing environment before compilation"
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_INSTALL_PREFIX=../install ..
+
+after_success:
+  - echo "Everything worked well, will publish executables now to production web server"
+
