@@ -9,7 +9,7 @@ compiler:
 
 
 
-before_script:
+script:
   - echo "Saving current workdir."
   - export CURRENTDIR=`pwd`
   - echo "Make sure cmake >3.3 is available."
