@@ -11,7 +11,11 @@ compiler:
 
 
 before_script:
+  - echo "Saving current workdir."
+  - export CURRENTDIR=`pwd`
   - echo "Make sure cmake >3.3 is available."
+  - mkdir cmake-install
+  - cd cmake-install
   - wget http://www.cmake.org/files/v3.4/cmake-3.4.1.tar.gz
   - tar -xvzf cmake-3.4.1.tar.gz
   - cd cmake-3.4.1/
@@ -19,6 +23,7 @@ before_script:
   - make 
   - sudo make install
   - update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force
+  - cd $CURRENTDIR
   - echo "Preparing environment before compilation"
   - mkdir build
   - cd build
