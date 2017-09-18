@@ -27,6 +27,9 @@ before_script:
   - mkdir build
   - cd build
   - cmake -DCMAKE_INSTALL_PREFIX=../install ..
+  - make
+  - make install
+  
 
 after_success:
   - echo "Everything worked well, will publish executables now to production web server"
