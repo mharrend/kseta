@@ -6,6 +6,14 @@ compiler:
   - gcc
   - clang
 
+addons:
+  apt:
+    sources:
+      - ppa:kalakris/cmake
+    packages:
+      - cmake
+
+
 before_script:
   - echo "Preparing environment before compilation"
   - mkdir build
