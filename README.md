@@ -19,7 +19,7 @@ For further details please have a look at [the CMake tutorial](http://www.cmake.
 ## Building the documentation
 
 The documentation of the project is based on doxygen. To build the documentation,
-the project must have been configured with `kseta_BUILD_DOCS` enabled, as
+the project must have been configured with `kseta_documentation` enabled, as
 described earlier. It can then be built and installed:
 
     make doc
