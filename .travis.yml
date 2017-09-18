@@ -1,4 +1,5 @@
 language: cpp
+sudo: false
 dist: trusty
 os:
   - linux
@@ -6,15 +7,18 @@ compiler:
   - gcc
   - clang
 
-addons:
-  apt:
-    sources:
-      - sourceline: 'deb http://de.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse'
-    packages:
-      - cmake
+
 
 
 before_script:
+  - echo "Make sure cmake >3.3 is available."
+  - wget http://www.cmake.org/files/v3.4/cmake-3.4.1.tar.gz
+  - tar -xvzf cmake-3.4.1.tar.gz
+  - cd cmake-3.4.1/
+  - ./configure
+  - make 
+  - sudo make install
+  - update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force
   - echo "Preparing environment before compilation"
   - mkdir build
   - cd build
