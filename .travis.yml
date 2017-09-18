@@ -9,7 +9,7 @@ compiler:
 addons:
   apt:
     sources:
-      - ppa:kalakris/cmake
+      - sourceline: 'ppa:kalakris/cmake'
     packages:
       - cmake
 
