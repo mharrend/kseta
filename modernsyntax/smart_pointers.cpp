@@ -6,21 +6,21 @@ g++ -o smart_pointers -std=c++14 -pthread -g -Wall -Wextra -Wpedantic -Werror sm
 
 class IntegerStore1 {
 public:
-   int* i;
+   std::shared_ptr<int> i;
 
    IntegerStore1():i(new int(0)) { }
 
    ~IntegerStore1() {
       if(i) {
-         delete i;
+         i.reset();
       }
    }
 
    void put(int* newValue) {
-      i = newValue;
+      i = std::shared_ptr<int>(newValue);
    }
 
-   int* get() {return i;}
+   std::shared_ptr<int> get() {return i;}
 
 private:
     // we need to explicitly disable value-copying, as it's not safe!
@@ -30,21 +30,22 @@ private:
 
 class IntegerStore2 {
 public:
-   int* i;
+   std::shared_ptr<int> i;
 
    IntegerStore2():i(new int(0)) { }
 
    ~IntegerStore2() {
       if(i) {
-         delete i;
+         i.reset();
       }
    }
 
    void set(int* newValue) {
-      i = newValue;
+      i = std::shared_ptr<int>(newValue);
    }
 
-   int* get() {return i;}
+   std::shared_ptr<int> get() {return i;}
+
 
 private:
     // we need to explicitly disable value-copying, as it's not safe!
@@ -74,13 +75,13 @@ void useCaseTwo() {
   anInteger = 5;
   // does the IntegerStore see the changed value?
   std::cout << "IntegerStore contains " << *(store->get()) << std::endl;
-  delete store;
+//  delete store;
   std::cout << "The integer is " << anInteger << std::endl;
 }
 
 
 int main(){
-  useCaseOne();
+//  useCaseOne();
   useCaseTwo();
 
   return 0;
