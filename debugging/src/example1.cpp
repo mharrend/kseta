@@ -1,12 +1,14 @@
 /*
-g++ -o example1 -std=c++14 -pthread -g -Wall -Wextra -Wpedantic -Werror example1.cpp
+g++ -o example1 -std=c++14 -fgnu-tm -pthread -g -Wall -Wextra -Wpedantic -Werror example1.cpp
 */
 #include <iostream>
 #include <thread>
 
 void incrementCounter(int* counter, const unsigned int times){
   for (unsigned int i=0; i<times;++i){
-    ++counter;
+    __transaction_atomic{
+    	++(*counter);
+    }
   }
 }
 
