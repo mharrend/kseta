@@ -13,7 +13,9 @@ void incrementCounter(int* counter, const unsigned int times){
 int main(){
   int counter(0);
   // launch a thread to increment the counter
-  std::thread increment(incrementCounter,&counter,100000);
+  auto incrementLambda = [&counter] (auto counter, auto times) {return counter = counter + times;  };
+  //std::thread increment(incrementCounter,&counter,100000);
+  std::thread increment(incrementLambda,&counter,100000);
   increment.join();
   std::cout << counter << std::endl;
   return 0;
