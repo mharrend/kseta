@@ -22,7 +22,7 @@ protected:
 
 
 void rangeLoop(std::vector<Tool> tools){
-  for(auto tool : tools){
+  for(auto & tool : tools){
     tool.print();
   }
 }
